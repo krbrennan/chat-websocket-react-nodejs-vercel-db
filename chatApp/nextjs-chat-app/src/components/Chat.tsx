@@ -6,6 +6,19 @@ const Chat = () => {
     const [ws, setWs] = useState<WebSocket | null>(null);
 
     useEffect(() => {
+        // get old messages from redis on mount
+
+        fetch('/api/save-chat')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if(Array.isArray(data)){
+                    setMessages(data.map(messageObj => messageObj.message));
+                }
+            });
+    }, []);
+
+    useEffect(() => {
         const socket = new WebSocket('ws://localhost:8080'); // Adjust the URL as needed
 
         socket.onopen = () => {
@@ -21,6 +34,8 @@ const Chat = () => {
         return () => {
             socket.close();
         };
+    
+
     }, []);
 
     const sendMessage = () => {
@@ -42,6 +57,11 @@ const Chat = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your message"
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        sendMessage();
+                    }
+                }}
             />
             <button onClick={sendMessage}>Send</button>
         </div>
