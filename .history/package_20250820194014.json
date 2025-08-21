@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@vercel/blob": "^1.1.1",
+    "@vercel/kv": "^3.0.0",
+    "ws": "^8.18.3"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "concurrently \"next\" \"node src/pages/api/websocket.ts\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.3.0"
+  }
+}
