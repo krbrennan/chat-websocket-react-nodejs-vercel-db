@@ -5,7 +5,7 @@ function Login(){
             <h1>Login</h1>
             <div className="form-container">
                 <form>
-                    <div className="email-field">
+                    <div>
                         <label htmlFor="email">Email:</label>
                         <input type="email" id="email" name="email" required />
                     </div>
@@ -15,9 +15,6 @@ function Login(){
                     </div>
                     <button type="submit">Login</button>
                 </form>
-                <div className="form-footer">
-                    <p>Don't have an account? <a href="/register">Register</a></p>
-                </div>
             </div>
         </div>
     )

@@ -1,8 +1,8 @@
 
-function Login(){
+function Register(){
     return(
-        <div className="login-container">
-            <h1>Login</h1>
+        <div>
+            <h1>Register</h1>
             <div className="form-container">
                 <form>
                     <div className="email-field">
@@ -13,14 +13,14 @@ function Login(){
                         <label htmlFor="password">Password:</label>
                         <input type="password" id="password" name="password" required />
                     </div>
-                    <button type="submit">Login</button>
+                    <button type="submit">Register</button>
                 </form>
                 <div className="form-footer">
-                    <p>Don't have an account? <a href="/register">Register</a></p>
+                    <p>Already have an account? <a href="/login">Login</a></p>
                 </div>
             </div>
         </div>
     )
 }
 
-export default Login;
+export default Register;

@@ -64,18 +64,13 @@ h6 {
     padding: 1rem;
     background-color: #333;
     color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
 }
 .nav-container .logo-left {
     display: flex;
     align-items: center;
     column-gap: 0.5rem;
 }
-.nav-container .logo-left a {
+.nav-container .logo-left h1 {
     font-size: 1.5rem;
 }
 .nav-container .right-nav {
@@ -102,10 +97,6 @@ h6 {
     background-color: #333;
     color: white;
 }
-.login-container > h1{
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
 .login-container .form-container{
     display: flex;
     flex-direction: column;
@@ -118,74 +109,12 @@ h6 {
 .login-container .form-container input,
 .login-container .form-container button{
     padding: 1rem;
+    margin: 1rem 0;
     border-radius: 0.25rem;
     border: none;
     outline: none;
 }
 .login-container .form-container button{
-    margin-top: 1em;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-}
-.email-field {
-
-}
-.password-field {
-    margin-top: 2em;
-}
-.form-footer {
-    margin-top: 2em;
-    text-align: center;
-}
-.form-footer p {
-    margin: 0;
-}
-.form-footer a {
-    color: #4CAF50;
-}
-
-
-/*                               */
-/* Register */
-/* Register */
-/* Register */
-/* Register */
-/* Register */
-/* Register */
-/*                               */
-/* Register Page */
-/*                               */
-.register-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #333;
-    color: white;
-}
-.register-container > h1{
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-.register-container .form-container{
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-}
-.register-container .form-container label{
-    display: flex;
-    flex-direction: column;
-}
-.register-container .form-container input,
-.register-container .form-container button{
-    padding: 1rem;
-    border-radius: 0.25rem;
-    border: none;
-    outline: none;
-}
-.register-container .form-container button{
     margin-top: 1em;
     background-color: #4CAF50;
     color: white;

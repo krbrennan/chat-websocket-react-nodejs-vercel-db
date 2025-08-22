@@ -154,30 +154,7 @@ h6 {
 /* Register */
 /* Register */
 /*                               */
-/* Register Page */
-/*                               */
-.register-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #333;
-    color: white;
-}
-.register-container > h1{
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-.register-container .form-container{
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-}
-.register-container .form-container label{
-    display: flex;
-    flex-direction: column;
-}
+
 .register-container .form-container input,
 .register-container .form-container button{
     padding: 1rem;
@@ -190,4 +167,20 @@ h6 {
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
+}
+.register-email-field {
+
+}
+.register-password-field {
+    margin-top: 2em;
+}
+.register-form-footer {
+    margin-top: 2em;
+    text-align: center;
+}
+.register-form-footer p {
+    margin: 0;
+}
+.register-form-footer a {
+    color: #4CAF50;
 }
