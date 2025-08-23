@@ -1,12 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Chat = () => {
     // const [messages, setMessages] = useState<string[]>([]);
     const [messages, setMessages] = useState<{message: string, timestamp: number}[]>([])
     const [input, setInput] = useState<string>('');
     const [ws, setWs] = useState<WebSocket | null>(null);
-
-    const chatContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         // get old messages from redis on mount
@@ -57,15 +55,6 @@ const Chat = () => {
 
     }, []);
 
-    useEffect(() => {
-        // automagically scroll to the bottom of the message container whenever new messages appear. if this wasn't implemented then the user can't know what the latest message is since the overflow of the container extends below its current position.
-        
-        if(chatContainerRef.current) {
-            chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-        }
-
-    }, [messages])
-
     const sendMessage = () => {
         if (ws && input) {
             ws.send(input);
@@ -83,16 +72,13 @@ const Chat = () => {
         }
     };
 
-
-
     return (
-        <div ref={chatContainerRef} className="message-container">
+        <div className="message-container">
             <div className="messages">
                 {messages.map((msg, index) => (
                     <div className="individual-message" key={index}>{msg.message} <span>{new Date(msg.timestamp).toLocaleTimeString()}</span></div>
                 ))}
             </div>
-
             <div className="message-and-send-container">
                 <input
                     type="text"

@@ -60,11 +60,9 @@ const Chat = () => {
     useEffect(() => {
         // automagically scroll to the bottom of the message container whenever new messages appear. if this wasn't implemented then the user can't know what the latest message is since the overflow of the container extends below its current position.
         
-        if(chatContainerRef.current) {
-            chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-        }
 
-    }, [messages])
+
+    })
 
     const sendMessage = () => {
         if (ws && input) {

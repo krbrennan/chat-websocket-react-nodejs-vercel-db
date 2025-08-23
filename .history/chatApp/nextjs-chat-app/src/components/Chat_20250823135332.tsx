@@ -1,12 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Chat = () => {
     // const [messages, setMessages] = useState<string[]>([]);
     const [messages, setMessages] = useState<{message: string, timestamp: number}[]>([])
     const [input, setInput] = useState<string>('');
     const [ws, setWs] = useState<WebSocket | null>(null);
-
-    const chatContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         // get old messages from redis on mount
@@ -15,7 +13,7 @@ const Chat = () => {
             .then(data => {
                 console.log(data);
                 if(Array.isArray(data)){
-                    // Mapping over an object to set object state:
+                    // Mapping over an object to set object state works like this:
                     // The function passed to setMessages takes the previous state (an array of objects)
                     // and returns a new array of objects. Each object in the new array is constructed
                     // by taking the properties of the corresponding object in the previous state
@@ -29,7 +27,6 @@ const Chat = () => {
     }, []);
 
     useEffect(() => {
-        // opens websocket connect to detect new messages in real time
         const socket = new WebSocket('ws://localhost:8080'); // Adjust the URL as needed
 
         socket.onopen = () => {
@@ -40,10 +37,8 @@ const Chat = () => {
             if(typeof event.data === "string") {
                 setMessages((prevMessages) => [...prevMessages, event.data]);
             } else if (event.data instanceof Blob) {
-                // yes its a blob bud
                 event.data.text().then(text => {
-                    // setMessages((prevMessages) => [...prevMessages, text]);
-                    setMessages((prevMessages) => [...prevMessages, { message: text, timestamp: event.timeStamp}]);
+                    setMessages((prevMessages) => [...prevMessages, text]);
                 });
             }
         };
@@ -56,15 +51,6 @@ const Chat = () => {
     
 
     }, []);
-
-    useEffect(() => {
-        // automagically scroll to the bottom of the message container whenever new messages appear. if this wasn't implemented then the user can't know what the latest message is since the overflow of the container extends below its current position.
-        
-        if(chatContainerRef.current) {
-            chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-        }
-
-    }, [messages])
 
     const sendMessage = () => {
         if (ws && input) {
@@ -83,30 +69,25 @@ const Chat = () => {
         }
     };
 
-
-
     return (
-        <div ref={chatContainerRef} className="message-container">
-            <div className="messages">
+        <div>
+            <div>
                 {messages.map((msg, index) => (
-                    <div className="individual-message" key={index}>{msg.message} <span>{new Date(msg.timestamp).toLocaleTimeString()}</span></div>
+                    <div key={index}>{msg}</div>
                 ))}
             </div>
-
-            <div className="message-and-send-container">
-                <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Type your message"
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                            sendMessage();
-                        }
-                    }}
-                />
-                <button onClick={sendMessage}>Send</button>
-            </div>
+            <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type your message"
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        sendMessage();
+                    }
+                }}
+            />
+            <button onClick={sendMessage}>Send</button>
         </div>
     );
 };

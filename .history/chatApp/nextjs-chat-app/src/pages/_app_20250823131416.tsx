@@ -13,7 +13,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     );
 }
 
-
 export default MyApp;
 /**
  * This is the main entry point for the Next.js application.

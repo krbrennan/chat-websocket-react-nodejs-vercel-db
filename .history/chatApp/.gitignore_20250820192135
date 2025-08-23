@@ -23,7 +23,6 @@ yarn-error.log*
 .vscode/
 
 .history
-.history/*
 
 # upstash
 .env.local

@@ -26,6 +26,7 @@ const Home = () => {
 
     return (
         <div>
+            <h1>Chit</h1>
             <Chat messages={messages} onSendMessage={sendMessage} />
         </div>
     );

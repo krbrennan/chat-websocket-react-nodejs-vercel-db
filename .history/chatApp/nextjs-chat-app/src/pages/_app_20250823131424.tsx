@@ -7,12 +7,11 @@ import "../styles/global.css";
 function MyApp({ Component, pageProps }: AppProps) {
     return (
         <>
-            <Navbar />
-            <Component {...pageProps} />
+            {/* <Navbar /> */}
+            {/* <Component {...pageProps} /> */}
         </>
     );
 }
-
 
 export default MyApp;
 /**

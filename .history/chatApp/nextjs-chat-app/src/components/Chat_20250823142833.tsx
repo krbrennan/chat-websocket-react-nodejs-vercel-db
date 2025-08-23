@@ -62,9 +62,9 @@ const Chat = () => {
         
         if(chatContainerRef.current) {
             chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-        }
+        }, [messages]
 
-    }, [messages])
+    })
 
     const sendMessage = () => {
         if (ws && input) {

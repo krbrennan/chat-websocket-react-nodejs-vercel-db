@@ -69,7 +69,7 @@ h6 {
     left: 0;
     right: 0;
     z-index: 1;
-    min-height: 10vh;
+    min-height: 5vh;
 }
 .nav-container .logo-left {
     display: flex;
@@ -204,15 +204,14 @@ h6 {
 /* Message Container */
 /*                               */
 .message-container {
-    margin-top: 10vh;
     display: flex;
     flex-direction: column;
-    max-height: 80vh;
+    max-height: 90vh;
     overflow-y: auto;
     padding: 1rem;
     background-color: #f1f1f1;
     border: 1px solid #ccc;
-    /* border-radius: 0.25rem; */
+    border-radius: 0.25rem;
 }
 .messages {
     display: flex;
@@ -225,43 +224,4 @@ h6 {
 }
 .individual-message:last-child {
     border-bottom: none;
-}
-.message-and-send-container > input, button {
-    /* position: absolute; */
-    bottom: 1rem;
-    left: 1rem;
-    right: 1rem;
-}
-
-.message-and-send-container {
-    height: 15vh;
-    display: flex;
-    justify-content: space-between;
-    /* align-items: center; */
-    padding: 3rem;
-    background-color: #fff;
-    border-top: 1px solid #ccc;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-.message-and-send-container> input {
-    padding: 1rem;
-    border-radius: 0.25rem;
-    border: 1px solid #ccc;
-    outline: none;
-    width: calc(100% - 110px);
-    box-sizing: border-box;
-    max-width: 80%;
-}
-.message-and-send-container > button {
-    padding: 1rem;
-    border-radius: 0.25rem;
-    border: none;
-    outline: none;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-    width: 15%;
 }

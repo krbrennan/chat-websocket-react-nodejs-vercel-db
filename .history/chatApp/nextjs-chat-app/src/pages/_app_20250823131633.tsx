@@ -4,15 +4,18 @@ import Navbar from '../components/Navbar';
 // stylesheet
 import "../styles/global.css";
 
-function MyApp({ Component, pageProps }: AppProps) {
-    return (
-        <>
-            <Navbar />
-            <Component {...pageProps} />
-        </>
-    );
+// function MyApp({ Component, pageProps }: AppProps) {
+//     return (
+//         <>
+//             <Navbar />
+//             <Component {...pageProps} />
+//         </>
+//     );
+// }
+function MyApp() {
+  return <div>Test</div>;
 }
-
+// export default MyApp;
 
 export default MyApp;
 /**
