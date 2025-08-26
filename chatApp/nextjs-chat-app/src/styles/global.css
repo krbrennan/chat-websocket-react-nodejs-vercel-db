@@ -58,6 +58,7 @@ h6 {
 /* navbar */
 /*                               */
 .nav-container{
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -207,7 +208,7 @@ h6 {
     margin-top: 10vh;
     display: flex;
     flex-direction: column;
-    max-height: 80vh;
+    max-height: 75vh;
     overflow-y: auto;
     padding: 1rem;
     background-color: #f1f1f1;
@@ -242,6 +243,7 @@ h6 {
     background-color: #fff;
     border-top: 1px solid #ccc;
     position: fixed;
+    /* position: relative; */
     bottom: 0;
     left: 0;
     right: 0;
