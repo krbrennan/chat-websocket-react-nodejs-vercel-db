@@ -1,14 +1,22 @@
 import type { AppProps } from 'next/app';
 import Navbar from '../components/Navbar';
+import { useState } from 'react';
 
 // stylesheet
 import "../styles/global.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+    const [isLoggedIn, setLoggedIn] = useState(false);
+
+    const handleLoginToggle= () => {
+        setLoggedIn(!isLoggedIn);
+    }
+
     return (
         <>
-            <Navbar />
-            <Component {...pageProps} />
+            <Navbar isLoggedIn={isLoggedIn} onLoginToggle={handleLoginToggle} />
+            <Component {...pageProps} isLoggedIn={isLoggedIn} setIsLoggedIn={ setLoggedIn } />
         </>
     );
 }
