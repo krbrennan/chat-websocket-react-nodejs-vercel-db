@@ -18,28 +18,29 @@ function Login({ setIsLoggedIn }: LoginProps) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+
+
+
+
     // const handleLogin = async (email: string, password: string) => {
     const handleLogin = async (e: React.FormEvent) => {
-        console.log("ok")
         e.preventDefault();
-        console.log(e)
-        // const email = (e.target as HTMLFormElement).email.value;
-        // const password = (e.target as HTMLFormElement).password.value;
 
-        // const data = {
-        //     email,
-        //     password,
-        // };
+         const form = e.target as HTMLFormElement;
 
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            if(email.length == 0) {
+                await signInWithEmailAndPassword(auth, form.email.value, form.password.value)
+            } else {
+                await signInWithEmailAndPassword(auth, email, password);
+            }
             // User is logged in!
             setIsLoggedIn(true);
             // send user to home page
             window.location.href = '/';
         } catch (error) {
             // Handle errors
-            alert("Login failed. Please check your credentials.");
+            alert(error + " Login failed. Please check your credentials.");
         }
     };
 
