@@ -1,28 +1,41 @@
 import type { AppProps } from 'next/app';
 import Navbar from '../components/Navbar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { auth } from '../../utils/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 
 // stylesheet
 import "../styles/global.css";
 
+
+
 function MyApp({ Component, pageProps }: AppProps) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const [isLoggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsLoggedIn(!!user);
+    });
+    return () => unsubscribe();
+  }, []);
 
-    const handleLoginToggle= () => {
-        setLoggedIn(!isLoggedIn);
-    }
+
+    // const handleLoginToggle= () => {
+    //     setIsLoggedIn(!isLoggedIn);
+    // }
 
     return (
         <>
-            <Navbar isLoggedIn={isLoggedIn} onLoginToggle={handleLoginToggle} />
-            <Component {...pageProps} isLoggedIn={isLoggedIn} setIsLoggedIn={ setLoggedIn } />
+            <Navbar isLoggedIn={isLoggedIn} />
+            <Component {...pageProps} setIsLoggedIn={ setIsLoggedIn } />
         </>
     );
 }
 
+// onLoginToggle={handleLoginToggle}
 
 export default MyApp;
+
 /**
  * This is the main entry point for the Next.js application.
  *

@@ -1,4 +1,5 @@
-
+import { auth } from '../../utils/firebase';
+import { signOut } from 'firebase/auth';
 
 type NavbarProps = {
     isLoggedIn: boolean;
@@ -6,6 +7,15 @@ type NavbarProps = {
 
 
 function Navbar({isLoggedIn}: NavbarProps) {
+
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+        } catch (error) {
+            alert(error);
+        }
+    }
+
     return (
         <div className="nav-container">
             <div className="logo-left">
@@ -13,7 +23,10 @@ function Navbar({isLoggedIn}: NavbarProps) {
             </div>
             <div className="right-nav">
                 {isLoggedIn ? (
-                    <a href="/profile">Profile</a>
+                    <>
+                        <a href="/profile">Profile</a>
+                        <a href="/" onClick={handleLogout}>Logout</a>
+                    </>
                 ) : (
                     <a href="/login">Login</a>
                 )}
